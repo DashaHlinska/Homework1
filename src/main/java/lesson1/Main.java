@@ -92,6 +92,7 @@ public class Main {
         System.out.println(hh >= 5);
         System.out.println(df > 999);
 
+        System.out.println("Line");//проверка изменений
 
 
 
