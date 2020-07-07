@@ -54,9 +54,9 @@ public class Conditional {
     }
     public void exmpl2 (String text, int a) {
         do {
-            a--;
-        } while (a >= 0);
-        System.out.println(text);
+            System.out.println(text);
+        } while (a == 0);
+
     }
 
    }
