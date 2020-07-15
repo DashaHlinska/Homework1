@@ -26,7 +26,7 @@ public class Main {
         System.out.println(str.equals(str2));
         System.out.println(str.equalsIgnoreCase(str2));
         System.out.println("str.toLowerCase: " + str.toLowerCase());
-        System.out.println("str.totoUpperCase: " + str.toUpperCase());
+        System.out.println("str.toUpperCase: " + str.toUpperCase());
 
         System.out.println("Задание №2");
         char unicode = 11302;
@@ -44,6 +44,12 @@ public class Main {
         System.out.println("Задание №3");
         write();
         read();
+
+        System.out.println("Задание №4");
+        registration();
+
+        System.out.println("Задание №5");
+        login();
 
     }
     private static void write() throws IOException {
@@ -71,4 +77,75 @@ public class Main {
         scanner.close();
 
     }
+    private static void registration() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите имя пользователя: ");
+        String username = sc.nextLine();
+        System.out.println("Введите новый пароль: ");
+        String password = sc.nextLine();
+        System.out.println("Введите пароль повторно: ");
+        String passwordchek = sc.nextLine();
+
+
+        if (password.equals(passwordchek)){
+            String fileName = "src/main/resources/users.txt";
+            Path pathToFile = Paths.get(fileName);
+            if (!Files.exists(pathToFile.getParent())){
+                Files.createDirectories(pathToFile.getParent());
+            }
+            FileWriter fileWriter = new FileWriter(fileName, true);
+            fileWriter.write( username + "\n" +
+                    password + "\n");
+            System.out.println("Поздравляем! Вы зарегистрированы!");
+            fileWriter.close();
+
+        }
+        else {
+            System.out.println("Пароль не подтвержден, проверьте написание");
+
+        }
+    }
+    private static void login () throws IOException {
+        String fileName = "src/main/resources/users.txt";
+        Path pathToFile = Paths.get(fileName);
+        if (!Files.exists(pathToFile.getParent())){
+           return;
+        }
+
+        Scanner sc = new Scanner(System.in);
+        int tryNumber = 3;
+
+        while (tryNumber >= 1){
+        System.out.println("Введите имя пользователя: ");
+        String username = sc.nextLine();
+        System.out.println("Введите пароль: ");
+        String password = sc.nextLine();
+
+        FileReader fileReader = new FileReader(fileName);
+        Scanner scannerLogin = new Scanner(fileReader);
+        while (scannerLogin.hasNextLine()) {
+            String login = scannerLogin.nextLine();
+            String pass = scannerLogin.nextLine();
+
+            if (username.equalsIgnoreCase(login)) {
+                if (password.equalsIgnoreCase(pass)) {
+                    System.out.println("Добро пожаловать, " + username + "!");
+                    return;
+                }
+            }
+
+        }
+        System.out.println("Данные не верны! Осталось " + (tryNumber - 1) + " попытки");
+        tryNumber --;
+
+        fileReader.close();
+        scannerLogin.close();
+        }
+        System.out.println("Попытки исчерпаны. Попробуйте позже.");
+
+
+    }
+
+
 }
+
