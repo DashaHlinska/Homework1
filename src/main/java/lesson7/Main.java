@@ -9,25 +9,27 @@ public class Main {
         System.out.println(firstCat.name);
 
         Cat secondCat = new Cat("Persik", "Persian");
-        System.out.println(secondCat.name);
-        System.out.println(secondCat.species);
+        System.out.println("Second cat: " + secondCat);
 
         Cat thirdCat = new Cat("Vasiliy", "american bobtail", 3);
-        System.out.println(thirdCat.name);
-        System.out.println(thirdCat.species);
-        System.out.println(thirdCat.age);
+        System.out.println("Third cat: " + thirdCat);
 
         Dog firstDog = new Dog("Archi");
         System.out.println(firstDog.name);
 
         Dog secondDog = new Dog("Ike", "bulldog");
-        System.out.println(secondDog.name);
-        System.out.println(secondDog.species);
+        System.out.println("Second dog: " + secondDog);
 
         Dog thirdDog = new Dog("Alf","canes", 5);
-        System.out.println(thirdDog.name);
-        System.out.println(thirdDog.species);
-        System.out.println(thirdDog.age);
+        System.out.println("Third dog: " + thirdDog);
+
+        thirdDog.setAge(6);
+        thirdDog.setName("Ralf");
+        System.out.println("Third dog with new owner (name): " + thirdDog.getName());
+        System.out.println("Third dog with new owner (age): " + thirdDog.getAge());
+
+
+
 
 
 
