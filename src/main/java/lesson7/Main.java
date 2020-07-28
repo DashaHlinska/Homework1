@@ -29,7 +29,8 @@ public class Main {
         thirdDog.setName("Ralf");
         System.out.println("Third dog with new owner (name): " + thirdDog.getName());
         System.out.println("Third dog with new owner (age): " + thirdDog.getAge());
-
+        cat.name = "Murzik";
+        System.out.println(cat.name);
 
 
 
