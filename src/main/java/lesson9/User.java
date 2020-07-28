@@ -1,6 +1,13 @@
 package lesson9;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class User {
     private String name;
@@ -21,6 +28,7 @@ public class User {
         this.sex = sex;
         this.country = country;
     }
+
 
     public String getName() {
         return name;
@@ -98,5 +106,33 @@ public class User {
                 ", sex='" + sex + '\'' +
                 ", country='" + country + '\'' +
                 '}';
+    }
+
+    public static void write() throws IOException {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите текст:");
+        String text = sc.nextLine();
+
+        String path = "src/main/resources/текст.txt";
+        Path pathToFile = Paths.get(path);
+        if (Files.exists(pathToFile.getParent())) {
+            System.out.println("Файл создан");
+        }
+        FileWriter fileWriter = new FileWriter(path, true);
+        fileWriter.write(text);
+        fileWriter.close();
+    }
+    public static void read () throws IOException {
+        String path = "src/main/resources/текст.txt";
+        FileReader fileReader = new FileReader(path);
+        Scanner scanner = new Scanner(fileReader);
+
+        while (scanner.hasNextLine()){
+            System.out.println(scanner.nextLine());
+        }
+        fileReader.close();
+        scanner.close();
+
     }
 }

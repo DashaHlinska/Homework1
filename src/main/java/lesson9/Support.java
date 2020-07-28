@@ -1,4 +1,4 @@
 package lesson9;
 
-public class Support {
+public class Support extends User{
 }

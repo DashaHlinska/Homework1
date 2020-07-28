@@ -1,4 +1,4 @@
 package lesson9;
 
-public class Admin {
+public class Admin extends Support{
 }
